@@ -7,10 +7,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Document(value = "payment_details")
 public class PaymentDetails extends BaseEntity {
 
+	private String orderId;
 	private String cartId;
 	private String customerId;
 	private double total;
 	private boolean status;
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
 
 	public String getCartId() {
 		return cartId;
