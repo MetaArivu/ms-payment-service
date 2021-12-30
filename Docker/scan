@@ -1,0 +1,10 @@
+#!/bin/bash
+# -------------------------------------------------------------------------------------------
+# @author: Araf Karsh Hamid
+# -------------------------------------------------------------------------------------------
+# Scan Container for Vulnerabilities
+# -------------------------------------------------------------------------------------------
+ORG=`../getServiceName 1`
+SERVICE=`../getServiceName 4`
+echo "Scanning $SERVICE for vulnerabilities"
+docker scan $ORG/$SERVICE

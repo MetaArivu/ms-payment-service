@@ -1,0 +1,11 @@
+#!/bin/bash
+# -------------------------------------------------------------------------------------------
+# @author: Araf Karsh Hamid
+# -------------------------------------------------------------------------------------------
+# Check Container Logs
+# -------------------------------------------------------------------------------------------
+ORG=`../getServiceName 1`
+SERVICE=`../getServiceName 2`
+CID=`cat $SERVICE.cid`
+echo "Checking logs for Container = $SERVICE and Container ID = $CID"
+docker logs $CID
