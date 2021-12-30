@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-payment-deploy
+  namespace: shoppingportal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      zone: prod
+      app: payment-svc
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        name: payment-svc
+        version: v1
+        release: stable
+        tier: fe
+        zone: prod
+        managed-by: m2
+        app: payment-svc
+    spec:
+      containers:
+        - name: ms-payment-deploy-ctr
+          image: metamagic/ms-payment-service:1.0 
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080           
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "prod"        
